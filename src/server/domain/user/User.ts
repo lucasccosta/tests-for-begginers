@@ -20,28 +20,19 @@ class User {
     return this._password;
   }
 
-  validate(): boolean {
-    if (
-      this.email == null ||
-      this.email == undefined ||
-      this.email.length == 0
-    ) {
-      throw new Error("Please insert a valid email");
-    }
-    if (this.name == null || this.name == undefined || this.name.length == 0) {
+  validate() {
+    if (this.name.length == 0) {
       throw new Error("Please insert a valid name");
     }
-    if (
-      this.password == null ||
-      this.password == undefined ||
-      this.password.length < 8
-    ) {
+    if (this.email.length == 0) {
+      throw new Error("Please insert a valid email");
+    }
+    if (this.password.length < 8) {
       throw new Error("Please insert a password with at least 8 characters");
     }
     if (this.password.includes(this.name)) {
       throw new Error("Password can't contain your name");
     }
-    return true;
   }
 
   changeEmail(email: string): void {
