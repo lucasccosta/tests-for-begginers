@@ -1,11 +1,11 @@
 import { Router } from "express";
 
-import { LocationsController } from "../controllers/user/LocationsController";
+import { CreateUsersController } from "../controllers/user/CreateUsersController";
 
-const locationsController = new LocationsController();
+const createUsersController = new CreateUsersController();
 
 const router = Router();
 
-router.get("/location", locationsController.getDistances);
+router.post("/user", createUsersController.handle);
 
 export { router };
