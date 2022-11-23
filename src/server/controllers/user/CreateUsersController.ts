@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUsers } from "../../useCases/createUsers";
+import { CreateUsers } from "../../useCases/CreateUsers";
 
 class CreateUsersController {
   async handle(request: Request, response: Response) {
@@ -8,11 +8,10 @@ class CreateUsersController {
     try {
       const useCase = new CreateUsers();
       const createUsers = await useCase.execute(name, email, password);
-      return response
-        .status(200)
-        .json({ message: "User created successfully!", createUsers });
+      return response.status(200).send("User created successfully!");
     } catch (error) {
-      return response.status(500).send(error);
+      // @ts-ignore
+      return response.status(500).send(error.message);
     }
   }
 }
