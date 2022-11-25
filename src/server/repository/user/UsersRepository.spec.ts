@@ -23,7 +23,7 @@ describe("Users Repository unit tests", () => {
     const user = new User("Usuario 1", "usuario@teste.com", "12345678");
 
     const usersRepository = new UsersRepository();
-    await usersRepository.create(user);
+    await usersRepository.create("Usuario 1", "usuario@teste.com", "12345678");
 
     const userResult = await UsersModel.findOne({
       where: { email: "usuario@teste.com" },
@@ -40,7 +40,7 @@ describe("Users Repository unit tests", () => {
     const user = new User("Usuario 1", "usuario@teste.com", "12345678");
 
     const usersRepository = new UsersRepository();
-    await usersRepository.create(user);
+    await usersRepository.create("Usuario 1", "usuario@teste.com", "12345678");
 
     const userFound = await usersRepository.getByEmail("usuario@teste.com");
 

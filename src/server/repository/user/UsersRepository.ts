@@ -2,11 +2,12 @@ import { UsersModel } from "../../database/sequelize/model/UserModel";
 import { User } from "../../domain/user/User";
 
 class UsersRepository {
-  async create(entity: User): Promise<void> {
+  async create(name: string, email: string, password: string): Promise<void> {
+    const user = new User(name, email, password);
     await UsersModel.create({
-      name: entity.name,
-      email: entity.email,
-      password: entity.password,
+      name: user.name,
+      email: user.email,
+      password: user.password,
     });
   }
 
