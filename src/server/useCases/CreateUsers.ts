@@ -1,4 +1,3 @@
-import { User } from "../domain/user/User";
 import { UsersRepository } from "../repository/user/UsersRepository";
 
 class CreateUsers {
@@ -8,8 +7,7 @@ class CreateUsers {
     if (userAlreadyExists)
       throw new Error("User already exists! Create another one.");
 
-    const user = new User(name, email, password);
-    await usersRepository.create(user);
+    await usersRepository.create(name, email, password);
   }
 }
 
