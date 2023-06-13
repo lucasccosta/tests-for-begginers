@@ -33,7 +33,7 @@ class CreateUsersController {
           const user = await UsersModel.create({ name, email, password });
 
           return response
-            .status(200)
+            .status(201)
             .json({ message: "User created successfully!", user });
         }
       }
