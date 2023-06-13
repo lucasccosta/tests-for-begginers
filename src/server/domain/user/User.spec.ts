@@ -13,11 +13,12 @@ describe("user domain unit tests", () => {
     }).toThrowError("Please insert a valid email");
   });
 
-  it("should throw error when password is empty", () => {
+  it("should throw error when password is lesser than 8 characters", () => {
     expect(() => {
       let user = new User("Userzin", "teste@xmail.com", "1234");
     }).toThrowError("Please insert a password with at least 8 characters");
   });
+
   it("should throw error when password contain name", () => {
     expect(() => {
       let user = new User("Userzin", "teste@xmail.com", "Userzin1223");
@@ -31,9 +32,23 @@ describe("user domain unit tests", () => {
     expect(user.email).toBe("user@teste.com");
   });
 
+  it("should throw error when changing user's email without value", () => {
+    expect(() => {
+      let user = new User("Userzin", "teste@xmail.com", "12345678");
+      user.changeEmail("");
+    }).toThrowError("Please insert a valid email");
+  });
+
   it("should change user's password", () => {
     let user = new User("Userzin", "teste@xmail.com", "12345678");
     user.changePassword("aDecentpass4w0rd");
     expect(user.password).toBe("aDecentpass4w0rd");
+  });
+
+  it("should throw error when changing user's password without value", () => {
+    expect(() => {
+      let user = new User("Userzin", "teste@xmail.com", "12345678");
+      user.changePassword("ab34");
+    }).toThrowError("Please insert a password with at least 8 characters");
   });
 });

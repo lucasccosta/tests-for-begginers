@@ -37,10 +37,12 @@ class User {
 
   changeEmail(email: string): void {
     this._email = email;
+    this.validate();
   }
 
   changePassword(password: string): void {
     this._password = password;
+    this.validate();
   }
 }
 
